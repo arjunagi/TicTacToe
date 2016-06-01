@@ -10,7 +10,7 @@ package ticTacToe;
  * 
  * But, the character array used to represent the board starts from the index 0.
  */
-public class TicTacToeSetUp {
+public class TicTacToe {
 	
 	protected char[] board; // 3x3 board with 9 squares
 	protected char playerToken; // the token selected by the player
@@ -25,7 +25,7 @@ public class TicTacToeSetUp {
 	 * @param playerToken
 	 * @param computerToken
 	 */
-	public TicTacToeSetUp(char playerToken, char computerToken) {
+	public TicTacToe(char playerToken, char computerToken) {
 		this.board = setUpBoard(this.playerToken, this.computerToken);
 		this.playerToken = playerToken;
 		this.computerToken = computerToken;
