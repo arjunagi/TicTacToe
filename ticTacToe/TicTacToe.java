@@ -1,14 +1,17 @@
 package ticTacToe;
 
 /**
+ * Class to set up the game and to track the status of an ongoing game.
+ * 
  * How the User and Computer sees the board (The indexing does not start from 0):
  * | 1 | 2 | 3
  * ------------
  * | 4 | 5 | 6
  * ------------
  * | 7 | 8 | 9
- * 
  * But, the character array used to represent the board starts from the index 0.
+ * 
+ * @author Karthik
  */
 public class TicTacToe {
 	
@@ -82,14 +85,14 @@ public class TicTacToe {
 	
 	
 	/**
-	 * Print how the board looks at the start of the game.
+	 * Print the board with numbers to show the user how to provide input.
 	 * | 1 | 2 | 3
 	 * ------------
 	 * | 4 | 5 | 6
 	 * ------------
 	 * | 7 | 8 | 9
 	 */
-	public void printInitialBoard() {
+	public void printBoardWithSquareNumbers() {
 		System.out.println();
 		for(int i=0; i<board.length; i++) {
 			if(i%3 == 0 && i!= 0) {
@@ -121,7 +124,7 @@ public class TicTacToe {
 	 * Check if there is a winner.
 	 * @return true if there is a winner, else false
 	 */
-	public boolean isThereAWinner() {
+	private boolean isThereAWinner() {
 		// Check if the right diagonal, left diagonal, middle row or middle column is completed. 
 		boolean diagonalsAndMiddles = (rightDiagonal() || leftDiagonal() || middleRow() || middleColumn()) && board[4]!=this.initialToken;
 		boolean topAndFirst = (topRow() || firstColumn()) && board[0]!=this.initialToken;
