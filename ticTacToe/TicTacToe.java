@@ -26,11 +26,12 @@ public class TicTacToe {
 	 * @param computerToken
 	 */
 	public TicTacToe(char playerToken, char computerToken) {
+		this.initialToken = '-';
 		this.board = setUpBoard(this.playerToken, this.computerToken);
 		this.playerToken = playerToken;
 		this.computerToken = computerToken;
-		this.initialToken = ' ';
 		this.winner = '-';
+		this.currentToken = this.playerToken;
 	}
 	
 	/**
@@ -82,11 +83,26 @@ public class TicTacToe {
 	
 	/**
 	 * Print how the board looks at the start of the game.
-	 * |  |  |
-	 * ---------
-	 * |  |  |
-	 * ---------
-	 * |  |  |
+	 * | 1 | 2 | 3
+	 * ------------
+	 * | 4 | 5 | 6
+	 * ------------
+	 * | 7 | 8 | 9
+	 */
+	public void printInitialBoard() {
+		System.out.println();
+		for(int i=0; i<board.length; i++) {
+			if(i%3 == 0 && i!= 0) {
+				System.out.println();
+				System.out.println("-------------");
+			}
+			System.out.print(" | " + (i+1));
+		}
+		System.out.println();
+	}
+	
+	/**
+	 * Print the board with the current markings.
 	 */
 	public void printBoard() {
 		System.out.println();
@@ -189,7 +205,7 @@ public class TicTacToe {
 	 */
 	private boolean isTheBoardFilled() {
 		for(int i=0; i<board.length; i++) {
-			if(board[i] == initialToken)
+			if(board[i] == this.initialToken)
 				return false;
 		}
 		return true;
@@ -202,11 +218,11 @@ public class TicTacToe {
 	public String isGameOver() {
 		boolean didSomeoneWin = isThereAWinner();
 		if(didSomeoneWin)
-			return this.winner + " won the game!";
+			return (this.winner + " won the game!");
 		else if(isTheBoardFilled())
 			return "Game over! It's a draw!";
 		else 
-			return "It's not over yet!";
+			return "notOver";
 	}
 	
 	
